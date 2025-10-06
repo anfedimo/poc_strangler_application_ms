@@ -79,6 +79,17 @@ poc_strangler_application_ms/
 └── README.md
 ```
 
+```mermaid
+flowchart TD
+   A["Cliente/API"] --> B["API Gateway\n(FastAPI, 8000)"]
+   B --> C1["Usuarios Service\n(FastAPI, 8001)"]
+   B --> C2["Pedidos Service\n(FastAPI, 8002)"]
+   B --> C3["Productos Service\n(FastAPI, 8003)"]
+   C1 --> D1["usuarios_db\n(Postgres, 5433)"]
+   C2 --> D2["pedidos_db\n(Postgres, 5434)"]
+   C3 --> D3["productos_db\n(Postgres, 5435)"]
+```
+
 ## Levantamiento de la solución
 
 1. Clona el repo:
@@ -116,4 +127,4 @@ poc_strangler_application_ms/
 **DevOps Ready:** Sigue las mejores prácticas de separación de servicios, independencia de base de datos y despliegue por contenedores.
 
 ---
-Arquitectura de Software — Universidad de La Sabana — Grupo 14 — 2025  
+Arquitectura de Software — Universidad de La Sabana — Grupo 14 — 2025

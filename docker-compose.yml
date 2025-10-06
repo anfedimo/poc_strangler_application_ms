@@ -1,7 +1,10 @@
 version: '3.9'
 
 services:
+# Versión de la sintaxis de Docker Compose
   api_gateway:
+ 
+# Definición de todos los servicios y bases de datos para la arquitectura Strangler PoC
     build: ./api_gateway
     ports:
       - "8000:8000"
@@ -11,6 +14,7 @@ services:
       - productos_service
 
   usuarios_service:
+# Microservicio de usuarios
     build: ./usuarios_service
     ports:
       - "8001:8000"
@@ -20,6 +24,7 @@ services:
       - usuarios_db
 
   pedidos_service:
+# Microservicio de pedidos
     build: ./pedidos_service
     ports:
       - "8002:8000"
@@ -29,6 +34,7 @@ services:
       - pedidos_db
 
   productos_service:
+# Microservicio de productos
     build: ./productos_service
     ports:
       - "8003:8000"
@@ -38,6 +44,7 @@ services:
       - productos_db
 
   usuarios_db:
+# Base de datos PostgreSQL para usuarios
     image: postgres:16
     environment:
       POSTGRES_USER: user
@@ -47,6 +54,7 @@ services:
       - "5433:5432"
 
   pedidos_db:
+# Base de datos PostgreSQL para pedidos
     image: postgres:16
     environment:
       POSTGRES_USER: user
@@ -56,6 +64,7 @@ services:
       - "5434:5432"
 
   productos_db:
+# Base de datos PostgreSQL para productos
     image: postgres:16
     environment:
       POSTGRES_USER: user
